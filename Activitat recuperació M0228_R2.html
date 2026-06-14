@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Exemple</title>
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg: #f9fafb;
+      --text: #111827;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 1rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0.5rem;
+    }
+
+    nav a:focus, button:focus {
+      outline: 2px solid yellow;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 2rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #e5e7eb;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .features {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div><strong>AppDemo</strong></div>
+    <div>
+      <a href="#features">Funcions</a>
+      <a href="#contacte">Contacte</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Benvingut a la nostra aplicació</h1>
+    <p>Una solució moderna, ràpida i accessible</p>
+    <img <img src="captura.png"
+     alt="Captura de l'aplicació"
+     style="max-width:20%; border-radius:10px;">>
+    <button class="btn">Comença ara</button>
+  </section>
+
+  <section id="features" class="features">
+    <article class="card">
+      <h2>Ràpid</h2>
+      <p>Optimitzat per a velocitat i rendiment.</p>
+    </article>
+
+    <article class="card">
+      <h2>Responsive</h2>
+      <p>Funciona en mòbil, tablet i ordinador.</p>
+    </article>
+
+    <article class="card">
+      <h2>Accessible</h2>
+      <p>Dissenyat amb bones pràctiques d’accessibilitat.</p>
+    </article>
+  </section>
+</main>
+
+<footer id="contacte">
+  <p>© 2026 AppDemo</p>
+<section style="padding:2rem;">
+  <h2>Contacta amb nosaltres</h2>
+
+  <form id="formulari">
+    <label for="nom">Nom:</label><br>
+    <input type="text" id="nom"><br><br>
+
+    <label for="email">Correu electrònic:</label><br>
+    <input type="email" id="email"><br><br>
+
+    <button type="submit" class="btn">Enviar</button>
+  </form>
+
+  <p id="missatge"></p>
+</section>
+
+<section style="padding:2rem;">
+  <button id="toggleBtn" class="btn">
+    Mostrar/Ocultar informació
+  </button>
+
+  <div id="infoExtra" style="display:none; margin-top:1rem;">
+    <p>Aquesta informació apareix i desapareix amb JavaScript.</p>
+  </div>
+</section>
+</footer>
+<script>
+
+const formulari = document.getElementById("formulari");
+const missatge = document.getElementById("missatge");
+
+formulari.addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+    const nom = document.getElementById("nom").value;
+    const email = document.getElementById("email").value;
+
+    if(nom === "" || email === ""){
+        missatge.textContent =
+        "Omple tots els camps.";
+        missatge.style.color = "red";
+    }
+    else{
+        missatge.textContent =
+        "Formulari enviat correctament!";
+        missatge.style.color = "green";
+    }
+});
+
+const boto = document.getElementById("toggleBtn");
+const info = document.getElementById("infoExtra");
+
+boto.addEventListener("click", function(){
+
+    if(info.style.display === "none"){
+        info.style.display = "block";
+    }
+    else{
+        info.style.display = "none";
+    }
+
+});
+
+</script>
+</body>
+</html>
